@@ -1,0 +1,45 @@
+.navigation {
+  display: flex;
+
+  &__list {
+    list-style: none;
+    display: flex;
+
+    &_type_row {
+      flex-direction: row;
+      
+    }
+
+    &_type_col {
+      flex-direction: column;
+    }
+  }
+
+  &__list_element {
+    
+    &_type_row {
+      padding: 10px;
+    }
+
+    &_type_col {
+      padding: 15px 10px;
+    }
+
+  }
+
+  &__link {
+    text-decoration: none;
+
+    &_type_row {
+      padding: 10px;
+    }
+
+    &_type_col {
+      padding: 15px 10px;
+    }
+
+    &_type_active {
+      color: violet;
+    }
+  }
+}

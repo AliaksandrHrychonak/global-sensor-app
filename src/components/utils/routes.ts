@@ -10,13 +10,13 @@ export const routes: Array<IRoutes> = [
   {
     path: "/bubblegum",
     exact: false,
-    component: "Main",
+    component: "B",
     name: "Продукт",
   },
   {
     path: "/shoelaces",
     exact: false,
-    component: "Main",
+    component: "S",
     name: "Контакты",
   },
 ];
