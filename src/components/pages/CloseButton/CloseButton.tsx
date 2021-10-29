@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
 import "./CloseButton.scss"
 interface CloseButtonProps {
-  closeEvent: () => void
+  closeEvent: (e: React.MouseEvent<HTMLElement>) => void
 }
 
 const CloseButton: FC<CloseButtonProps> = ({closeEvent}) => {

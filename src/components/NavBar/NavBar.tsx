@@ -7,7 +7,7 @@ export interface INavBarProps {
   routes: Array<IRoutes>;
   rowLink: boolean;
   isMobile: boolean;
-  toggleMenu: () => void
+  toggleMenu: (e: React.MouseEvent<HTMLElement>) => void
 }
 const NavBar: React.FunctionComponent<INavBarProps> = ({rowLink, routes, isMobile, toggleMenu}) => {
   return (

@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   height: 90px;
-  
+  position: relative;
   &_type_reverse {
     flex-direction: row-reverse;
     justify-content: space-around;

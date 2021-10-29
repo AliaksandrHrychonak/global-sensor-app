@@ -4,6 +4,8 @@
   &__list {
     list-style: none;
     display: flex;
+    padding: 0;
+    margin: 0;
 
     &_type_row {
       flex-direction: row;
@@ -12,6 +14,7 @@
 
     &_type_col {
       flex-direction: column;
+      width: calc(100% - 20px);
     }
   }
 
@@ -23,6 +26,7 @@
 
     &_type_col {
       padding: 15px 10px;
+      width: 100%;
     }
 
   }

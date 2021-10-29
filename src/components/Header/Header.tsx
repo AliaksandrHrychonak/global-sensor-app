@@ -2,18 +2,20 @@ import * as React from 'react';
 import "./Header.scss"
 import { IRoutes } from '../../types';
 import NavBar from '../NavBar/NavBar';
+import { BackButton } from '../Buttons/BackButton/BackButton';
 
 export interface IHeaderProps {
   logo: string,
   isMobile: boolean,
   routes: Array<IRoutes>, 
-  toggleMenu: () => void,
+  toggleMenu: (e: React.MouseEvent<HTMLElement>) => void,
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = ({logo, isMobile, routes, toggleMenu}) => {
   
   return (
     <header className={`header ${isMobile ? "header_type_reverse" : "" }`}>
+      <BackButton />
       <img src={logo} alt='логотип' className="header__logo" />
       {
         isMobile 
