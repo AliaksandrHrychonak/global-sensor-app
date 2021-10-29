@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import "./MobileNavBar.scss"
 import { IRoutes } from '../../types'
 import NavBar from '../NavBar/NavBar'
-import CloseButton from '../pages/CloseButton/CloseButton'
+import CloseButton from '../Icons/Buttons/CloseButton/CloseButton'
 
 interface MobileNavBarProps {
   routes: Array<IRoutes>,

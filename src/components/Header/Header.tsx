@@ -2,7 +2,8 @@ import * as React from 'react';
 import "./Header.scss"
 import { IRoutes } from '../../types';
 import NavBar from '../NavBar/NavBar';
-import { BackButton } from '../Buttons/BackButton/BackButton';
+import { BackButton } from '../Icons/Buttons/BackButton/BackButton';
+import { MenuIcon } from '../Icons/MenuIcon/MenuIcon';
 
 export interface IHeaderProps {
   logo: string,
@@ -20,7 +21,7 @@ const Header: React.FunctionComponent<IHeaderProps> = ({logo, isMobile, routes, 
       {
         isMobile 
         ?
-        <button onClick={toggleMenu} className={`header__button-menu ${isMobile ? 'header__button-menu_type_visible' : 'header__button-menu_type_hidden'}`} ><span></span></button>
+        <MenuIcon isMobile={isMobile} toggleMenu={toggleMenu} />
         :
         <NavBar routes={routes} rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu}/> 
       }
