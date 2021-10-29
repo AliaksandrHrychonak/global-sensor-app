@@ -11,14 +11,14 @@ interface MobileNavBarProps {
   isMobile: boolean,
 }
 
-export const MobileNavBar: FC<MobileNavBarProps> = (props: MobileNavBarProps) => {
+export const MobileNavBar: FC<MobileNavBarProps> = ({isOpen, isMobile, routes, toggleMenu}) => {
   return (
-    <aside className={`menu ${props.isOpen && props.isMobile ? "menu_type_visible" : "menu_type_hidden" }`}>
-      <div className="menu__lens" onClick={props.toggleMenu}></div>
+    <aside className={`menu ${isOpen && isMobile ? "menu_type_visible" : "menu_type_hidden" }`}>
+      <div className="menu__lens" onClick={toggleMenu}></div>
       <div className="menu__content">
-        <CloseButton closeEvent={props.toggleMenu} />
+        <CloseButton closeEvent={toggleMenu} />
         <div className="menu__content-head">head</div>
-        <NavBar rowLink={false} routes={props.routes} isMobile={props.isMobile} toggleMenu={props.toggleMenu}/>
+        <NavBar rowLink={false} routes={routes} isMobile={isMobile} toggleMenu={toggleMenu}/>
       </div>
     </aside>
   )

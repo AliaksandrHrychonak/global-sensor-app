@@ -2,7 +2,6 @@ import * as React from 'react';
 import "./Header.scss"
 import { IRoutes } from '../../types';
 import NavBar from '../NavBar/NavBar';
-import { routes } from '../utils/routes';
 
 export interface IHeaderProps {
   logo: string,
@@ -11,20 +10,19 @@ export interface IHeaderProps {
   toggleMenu: () => void,
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = (props) => {
+const Header: React.FunctionComponent<IHeaderProps> = ({logo, isMobile, routes, toggleMenu}) => {
   
   return (
-    <header className={`header ${props.isMobile ? "header_type_reverse" : "" }`}>
-      <img src={props.logo} alt='логотип' className="header__logo" />
+    <header className={`header ${isMobile ? "header_type_reverse" : "" }`}>
+      <img src={logo} alt='логотип' className="header__logo" />
       {
-        props.isMobile 
+        isMobile 
         ?
-        <button onClick={props.toggleMenu} className={`header__button-menu ${props.isMobile ? 'header__button-menu_type_visible' : 'header__button-menu_type_hidden'}`} ><span></span></button>
+        <button onClick={toggleMenu} className={`header__button-menu ${isMobile ? 'header__button-menu_type_visible' : 'header__button-menu_type_hidden'}`} ><span></span></button>
         :
-        <NavBar routes={routes} rowLink={true} isMobile={props.isMobile} toggleMenu={props.toggleMenu}/> 
+        <NavBar routes={routes} rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu}/> 
       }
-      
-      
+
     </header>
   );
 };

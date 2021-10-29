@@ -9,23 +9,23 @@ export interface INavBarProps {
   isMobile: boolean;
   toggleMenu: () => void
 }
-const NavBar: React.FunctionComponent<INavBarProps> = (props) => {
+const NavBar: React.FunctionComponent<INavBarProps> = ({rowLink, routes, isMobile, toggleMenu}) => {
   return (
     <nav className="navigation">
       <ul
         className={`navigation__list ${
-          props.rowLink
+          rowLink
             ? "navigation__list_type_row"
             : "navigation__list_type_col"
         }`}
       >
-        {props.routes.map((link,index) => (
-          <li className={`navigation__list_element ${ props.rowLink ? "navigation__list_element_type_row" : "navigation__list_element_type_col"}`} key={index}>
+        {routes.map((link,index) => (
+          <li className={`navigation__list_element ${ rowLink ? "navigation__list_element_type_row" : "navigation__list_element_type_col"}`} key={index}>
             <NavLink
               to={link.path}
-              className={`navigation__link ${ props.rowLink ? "navigation__link_type_row" : "navigation__link_type_col"}`}
+              className={`navigation__link ${ rowLink ? "navigation__link_type_row" : "navigation__link_type_col"}`}
               activeClassName="navigation__link_type_active"
-              onClick={props.isMobile ? props.toggleMenu : undefined} 
+              onClick={isMobile ? toggleMenu : undefined} 
             >
               {link.name}
             </NavLink>

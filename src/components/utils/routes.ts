@@ -14,9 +14,9 @@ export const routes: Array<IRoutes> = [
     name: "Продукт",
   },
   {
-    path: "/shoelaces",
+    path: "/contact",
     exact: false,
-    component: "S",
+    component: "Contact",
     name: "Контакты",
   },
 ];
