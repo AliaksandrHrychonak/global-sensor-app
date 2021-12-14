@@ -1,0 +1,14 @@
+{
+  "common" : {
+    "logo": "logo",
+    "signin": "Sign-in",
+    "Home": "Home",
+    "PM2100": "PM2100",
+    "PM2101": "PM2101",
+    "PM2102": "PM2102",
+    "Contact": "Contact",
+    "email": "E-mail",
+    "password": "Password"
+
+  }
+}

@@ -1,45 +1,67 @@
 import * as React from "react";
-import { useState } from "react";
-import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
-import Header from "../Header/Header";
-import { MobileNavBar } from "../MobileNavBar/MobileNavBar";
-import { routes } from "../utils/routes";
+import '../../i18n'
+import { useState, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import { connect, useDispatch } from 'react-redux';
+// import { MobileMenu } from "../MobileMenu/MobileMenu";
+import config from "../../utils/config";
+import { Main } from "../pages/Main";
+import { Login } from "../pages/Login";
+import { Registration } from "../pages/Registration";
+import { NotFound } from "../pages/NotFound";
+import { checkAuth } from "../../store/actions/authActions";
 
 export const App: React.FunctionComponent = () => {
-  const [isMobileNavOpen, setIsMobileNavOpen] = useState<boolean>(false)
-  const [windowDimension, setWindowDimension] = useState<number>(0);
-  const isMobile: boolean = windowDimension <= 1024;
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
+  const [windowDimension, setWindowDimension] = useState<number>(window.innerWidth);
+  const isMobile: boolean = windowDimension <= 800;
+  const dispatch = useDispatch<any>();
 
-  React.useEffect(() => {
-    return setWindowDimension(window.innerWidth);
-  }, []);
+  useEffect(() => {
+    let timeoutId: any = null;
+    const resizeListener = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        setWindowDimension(window.innerWidth);
+        if (isMobile) {
+          setIsMobileMenuOpen(false);
+        }
+      }, config.IS_TIMEOUT);
+    };
+    window.addEventListener("resize", resizeListener);
+    return () => {
+      window.removeEventListener("resize", resizeListener);
+    };
+  }, [isMobile]);
 
-  React.useEffect(() => {
-    function handleResize() {
-      setWindowDimension(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize)
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  useEffect(() => {
+    console.log('tyty');
+    dispatch(checkAuth())
+  }, [dispatch])
 
   const handleMobileMenu = () => {
-    setIsMobileNavOpen(!isMobileNavOpen)
+    setIsMobileMenuOpen(!isMobileMenuOpen)
   }
 
-
   return (
-    <div className="page">
-      <Header logo="logo" routes={routes} toggleMenu={handleMobileMenu} isMobile={isMobile}/>
-      <Router>
-        <Switch>
-          {
-            routes.map((route, index) => (
-              <Route key={index} path={route.path} exact={route.exact} />
-            ))
-          }
-        </Switch>
-      </Router>
-      <MobileNavBar routes={routes} toggleMenu={handleMobileMenu} isOpen={isMobileNavOpen} isMobile={isMobile}/>
-    </div>
+    <>
+    <Routes>
+      <Route path="/" element={<Main isMobile={isMobile} toggleMenu={handleMobileMenu}/>} />
+      <Route path="/sign-in" element={<Login />} />
+      <Route path="/sign-up" element={<Registration />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    </>
   );
 };
+
+function mapStateToProps(state: { auth: { user: any; }; }) {
+  const { user } = state.auth;
+  return {
+    user,
+  };
+}
+
+export default connect(mapStateToProps)(App);
+
+

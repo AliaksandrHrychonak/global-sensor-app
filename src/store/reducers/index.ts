@@ -1,8 +1,6 @@
 import { combineReducers } from "redux";
-import cardReducer from "./cardReducer";
+import auth from "./authReducer";
 
-export const rootReducer = combineReducers({
-    card: cardReducer
-})
-
-export type RootState = ReturnType<typeof rootReducer>
+export default combineReducers({
+  auth,
+});

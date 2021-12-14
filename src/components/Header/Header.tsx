@@ -1,31 +1,32 @@
 import * as React from 'react';
 import "./Header.scss"
-import { IRoutes } from '../../types';
 import NavBar from '../NavBar/NavBar';
-import { BackButton } from '../Icons/Buttons/BackButton/BackButton';
-import { MenuIcon } from '../Icons/MenuIcon/MenuIcon';
+import logo from '../../images/icons/logo.svg';
+import { MenuButton } from '../Icons/MenuButton/MenuButton';
+import { availableLanguages } from "../../i18n";
+import { useTranslation } from 'react-i18next';
+import { SwitchLanguageButton } from '../Icons/SwitchLanguageButton/SwitchLanguageButton';
+import { AccountBar } from '../AccountBar/AccountBar';
 
 export interface IHeaderProps {
-  logo: string,
   isMobile: boolean,
-  routes: Array<IRoutes>, 
-  toggleMenu: (e: React.MouseEvent<HTMLElement>) => void,
+  toggleMenu: React.MouseEventHandler
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = ({logo, isMobile, routes, toggleMenu}) => {
-  
+const Header: React.FunctionComponent<IHeaderProps> = ({ isMobile, toggleMenu }) => {
+  const {t, i18n} = useTranslation()
   return (
     <header className={`header ${isMobile ? "header_type_reverse" : "" }`}>
-      <BackButton />
-      <img src={logo} alt='логотип' className="header__logo" />
+      <img alt={t('logo')} className="header__logo" src={logo} />
       {
-        isMobile 
+        isMobile
         ?
-        <MenuIcon isMobile={isMobile} toggleMenu={toggleMenu} />
+        <MenuButton isMobile={isMobile} toggleMenu={toggleMenu} />
         :
-        <NavBar routes={routes} rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu}/> 
+        <NavBar rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu} /> 
       }
-
+      { !isMobile && <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} /> }
+      <AccountBar isMobile={isMobile} toggleMenu={toggleMenu}/>
     </header>
   );
 };
