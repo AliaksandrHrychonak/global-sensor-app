@@ -5,6 +5,7 @@ import { validationSchemaRegistration } from "../../../utils/validationsForms";
 import { connect, useDispatch } from "react-redux";
 import { registration } from "../../../store/actions/authActions";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface RegistrationFormProps {
   dispatch: any
@@ -12,6 +13,7 @@ interface RegistrationFormProps {
 
 const RegistrationForm: FC<RegistrationFormProps> = () => {
   const dispatch = useDispatch<any>();
+  const {t} = useTranslation()
 
   type UserSubmitForm = {
     firstName: string;
@@ -30,7 +32,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <label className="form__label">firstName</label>
+      <label className="form__label">{t("name")}</label>
       <input
         type="text"
         {...register("firstName")}
@@ -43,10 +45,10 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.firstName?.message && "form__error_type_visible"
         }`}
       >
-        {errors.firstName?.message}
+        {t(errors.firstName?.message || '')}
       </span>
 
-      <label className="form__label">lastName</label>
+      <label className="form__label">{t("surname")}</label>
       <input
         type="text"
         {...register("lastName")}
@@ -59,10 +61,10 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.lastName?.message && "form__error_type_visible"
         }`}
       >
-        {errors.lastName?.message}
+        {t(errors.lastName?.message || '')}
       </span>
 
-      <label className="form__label">Email</label>
+      <label className="form__label">{t("email")}</label>
       <input
         type="text"
         {...register("email")}
@@ -75,10 +77,10 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.email?.message && "form__error_type_visible"
         }`}
       >
-        {errors.email?.message}
+        {t(errors.email?.message || '')}
       </span>
 
-      <label className="form__label">Password</label>
+      <label className="form__label">{t("password")}</label>
       <input
         type="password"
         {...register("password")}
@@ -91,10 +93,10 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.password?.message && "form__error_type_visible"
         }`}
       >
-        {errors.password?.message}
+        {t(errors.password?.message || '')}
       </span>
 
-      <label className="form__label">Confirm Password</label>
+      <label className="form__label">{t("confirm-password")}</label>
       <input
         type="password"
         {...register("confirmPassword")}
@@ -107,7 +109,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.confirmPassword?.message && "form__error_type_visible"
         }`}
       >
-        {errors.confirmPassword?.message}
+        {t(errors.confirmPassword?.message || '')}
       </span>
 
       <div className="form-group form-check">
@@ -119,24 +121,24 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           }`}
         />
         <label className="form__label" htmlFor="acceptTerms">
-          I have read and agree to the Terms
+          {t("confirm-terms")}
         </label>
         <span
           className={`form__error ${
             errors.acceptTerms?.message && "form__error_type_visible"
           }`}
         >
-          {errors.acceptTerms?.message}
+          {t(errors.acceptTerms?.message || '')}
         </span>
       </div>
 
       <button type="submit" className="form__button form__button_type_active">
-        Register
+        {t("register")}
       </button>
       <Link to="/sign-in" className="form__link">
         <p className="form__subtitle">
-          Уже зарегистрированы?
-          <span className="form__span">Войти</span>
+          {t("already_register")}
+          <span className="form__span">{t("signin")}</span>
         </p>
       </Link>
     </form>

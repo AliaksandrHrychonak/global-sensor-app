@@ -1,0 +1,38 @@
+.form_type_contact {}
+
+
+.form__label_type_contact {
+  color: #fff;
+}
+
+.form__input_theme_white {
+  color: #fff;
+}
+
+.form__textarea {
+  display: inline-flex;
+  border: none;
+  border-bottom: 1px solid #E8E8E8;
+  background-color: transparent;
+  color: #fff;
+  min-height: 100px;
+  max-height: 200px;
+  width: 100%;
+  transition: all 0.4s linear;
+  margin: 5px 0 0;
+  padding: 0 0 10px 0;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  resize: vertical;
+
+  &_theme_error {
+    color: #EE3465;
+    border-bottom: 1px solid #EE3465;
+  }
+}
+
+.form__textarea:focus {
+  outline: none;
+  border-bottom: 1px solid #3456F3;
+}

@@ -1,24 +1,58 @@
 {
   "common" : {
     "logo": "logo",
-    "signin": "Sign-in",
-    "registration-title": "Create Account",
-    "login-title": "Sign in",
-    "sign_in_with_google": "Sign in with Google",
+
     "Home": "Home",
     "PM2100": "PM2100",
     "PM2101": "PM2101",
     "PM2102": "PM2102",
     "Contact": "Contact",
+    
+    "signin": "Sign in",
+    "not_register": "Not registered yet?",
+    "already_register": "Already Registered?",
+
+    "registration-title": "Create Account",
+    "login-title": "Sign in",
+    "contact_us": "Contact us!",
+    "sign_in_with_google": "Sign in with Google",
     "email": "E-mail",
     "password": "Password",
+    "name": "First Name",
+    "surname": "Surname",
+    "fullname": "Full Name",
+    "message": "Message",
+    "submit": "Submit",
+    "confirm-password": "Confirm Password",
+    "confirm-terms": "I have read and agree to the Terms",
+    "register": "Register",
+
+    "error_name_reg": "First Name is required.",
+    "error_surname_reg": "Surname is required.",
+    "error_fullname_reg": "Full Name is required.",
+    "error_pas_red": "Password is required.",
+    "error_сonfirm_reg": "Password confirmation is required.",
+    "error_email_reg": "Email is required.",
+    "error_message_reg": "Message is required.",
+    "error_terms_reg": "Accept Terms is required.",
+    "error_min_six": "This field must be at least 6 characters long.",
+    "error_min_two": "This field must be at least 2 characters long.",
+    "error_max_twenty": "This field must not exceed 20 characters.",
+    "error_max_fourty": "This field must not exceed 40 characters.",
+    "error_max_four_hundred": "This field must not exceed 400 characters.",
+    "error_email_valid": "Email is invalid.",
+    "error_pas_valid": "Password is required.",
+    "error_confirm_pas_valid": "Confirm password does not match.",
+   
     "promo-title": "Environmental monitoring systems",
     "promo-subtitle": "Radiation and chemical control devices",
+    
     "about-company": "About Company",
     "about-fact-company": "GLOBALSENSOR company, founded in 2021, to solve the problems of NBC protection, development and production of radiation and chemical monitoring devices, creation of environmental monitoring systems using various types of unmanned platforms for remote unmanned reconnaissance.",
     "about-fact-integration": "Our devices are designed for ease of integration into existing monitoring systems and using the most modern technologies, the ability to connect to the network of our detectors.",
     "about-fact-developers": "Our company employs a team of qualified engineers and software developers.",
     "about-fact-protected": "We provide services for the integration of various devices into various networks, the development of sensor systems and networks related to the detection of radiological, toxic industrial, chemical warfare agents and biological threats.",
+    
     "footer-service": "Service",
     "footer-support" : "Support",
     "footer-contact" : "Our contacts",
@@ -31,6 +65,12 @@
     "footer-social-fb" : "Facebook",
     "footer-social-inst" : "Instagram",
     "footer-social-link" : "LinkedIn",
-    "footer-terms" : "Privacy Policy"
+    "footer-terms" : "Privacy Policy",
+
+    "contact-title": "GLOBALSENSOR ltd.",
+    "contact-number-ynp": "TAX: 123-456-789",
+    "contact-location-country": "Republic of Belarus",
+    "contact-location-index": "220141, Minsk",
+    "contact-location-adress": "Academician Kuprevich Street, 10"
   }
 }

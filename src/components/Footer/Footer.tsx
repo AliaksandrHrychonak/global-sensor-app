@@ -73,10 +73,10 @@ const Footer: FC<FooterProps> = () => {
         <div className="footer__content">
           <Logo />
           {footerList.map((item: { title: any; items: any[]; }) => (
-            <ul className="footer__list">
+            <ul key={item.title} className="footer__list">
               <h4 className="footer__title">{t(item.title)}</h4>
               {item.items.map((e) => (
-                <li className="footer__list_item">
+                <li key={e.name} className="footer__list_item">
                   <Link to={e.path} className="footer__link">
                     { e.image && <img  alt={e.name} src={e.image} className="footer__social_icon"/> }
                     <p className="footer__subtitle">{t(e.name)}</p>

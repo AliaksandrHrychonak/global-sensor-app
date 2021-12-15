@@ -10,6 +10,7 @@ import { Login } from "../pages/Login";
 import { Registration } from "../pages/Registration";
 import { NotFound } from "../pages/NotFound";
 import { checkAuth } from "../../store/actions/authActions";
+import { Contact } from "../pages/Contact";
 
 export const App: React.FunctionComponent = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
@@ -47,6 +48,7 @@ export const App: React.FunctionComponent = () => {
     <>
     <Routes>
       <Route path="/" element={<Main isMobile={isMobile} toggleMenu={handleMobileMenu}/>} />
+      <Route path="/contact" element={<Contact isMobile={isMobile} toggleMenu={handleMobileMenu}/>} />
       <Route path="/sign-in" element={<Login />} />
       <Route path="/sign-up" element={<Registration />} />
       <Route path="*" element={<NotFound />} />

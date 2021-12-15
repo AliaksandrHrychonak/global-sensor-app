@@ -18,4 +18,13 @@
     justify-content: center;
     min-height: 100vh;
   }
+
+  &_type_contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    max-width: calc(100% - 100px);
+    padding: 50px;
+  }
 }

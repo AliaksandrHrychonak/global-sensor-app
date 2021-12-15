@@ -1,28 +1,39 @@
 import * as Yup from "yup";
 
 export const validationSchemaRegistration = Yup.object().shape({
-  firstName: Yup.string().required("Fullname is required")
-    .min(2, "Username must be at least 6 characters")
-    .max(20, "Username must not exceed 20 characters"),
+  firstName: Yup.string().required("error_name_reg")
+    .min(2, "error_min_two")
+    .max(20, "error_max_twenty"),
   lastName: Yup.string()
-    .required("Username is required")
-    .min(6, "Username must be at least 6 characters")
-    .max(20, "Username must not exceed 20 characters"),
-  email: Yup.string().required("Email is required").email("Email is invalid"),
+    .required("error_surname_reg")
+    .min(6, "error_min_six")
+    .max(20, "error_max_twenty"),
+  email: Yup.string().required("error_email_reg").email("error_email_valid"),
   password: Yup.string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters")
-    .max(40, "Password must not exceed 40 characters"),
+    .required("error_pas_red")
+    .min(6, "error_min_six")
+    .max(40, "error_max_fourty"),
   confirmPassword: Yup.string()
-    .required("Confirm Password is required")
-    .oneOf([Yup.ref("password"), null], "Confirm Password does not match"),
-  acceptTerms: Yup.bool().oneOf([true], "Accept Terms is required"),
+    .required("error_сonfirm_reg")
+    .oneOf([Yup.ref("password"), null], "error_confirm_pas_valid"),
+  acceptTerms: Yup.bool().oneOf([true], "error_terms_reg"),
 });
 
 export const validationSchemaLogin = Yup.object().shape({
-  email: Yup.string().required("Email is required").email("Email is invalid"),
+  email: Yup.string().required("error_email_reg").email("error_email_valid"),
   password: Yup.string()
-    .required("Password is required")
-    .min(6, "Password must be at least 6 characters")
-    .max(40, "Password must not exceed 40 characters"),
+    .required("error_pas_red")
+    .min(6, "error_min_six")
+    .max(40, "error_max_fourty"),
+});
+
+export const validationSchemaLContact = Yup.object().shape({
+  fullname: Yup.string().required("error_fullname_reg")
+    .min(2, "error_min_two")
+    .max(40, "error_max_fourty"),
+  email: Yup.string().required("error_email_reg").email("error_email_valid"),
+  message: Yup.string()
+    .required("error_email_reg")
+    .min(6, "error_min_six")
+    .max(400, "error_max_fourty"),
 });

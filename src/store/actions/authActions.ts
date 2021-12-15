@@ -45,6 +45,10 @@ export const login = (email: any, password: any) => (dispatch: (arg0: { type: st
   })
 };
 
+export const contactCallback = (fullname: any, email: any, message: any) => (dispatch: any) => {
+  console.log(fullname, email, message);
+};
+
 export const logout = () => (dispatch: (arg0: { type: string; }) => void) => {
   AuthService.logout();
 
