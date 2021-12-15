@@ -2,10 +2,7 @@
   display: flex;
 
   &__list {
-    list-style: none;
     display: flex;
-    padding: 0;
-    margin: 0;
 
     &_type_row {
       flex-direction: row;
@@ -19,7 +16,9 @@
   }
 
   &__list_element {
-    
+    font-size: 15px;
+    line-height: 26px;
+    letter-spacing: 0.05em;
     &_type_row {
       padding: 10px;
     }
@@ -32,10 +31,11 @@
   }
 
   &__link {
-    text-decoration: none;
+    color: #E9E9E9;
+    transition: all 0.4s linear;
 
     &_type_row {
-      padding: 10px;
+      padding: 10px 0;
     }
 
     &_type_col {
@@ -43,7 +43,8 @@
     }
 
     &_type_active {
-      color: violet;
+      color: #FFB570;
+      border-bottom: 1px solid #FFB570;
     }
   }
 }

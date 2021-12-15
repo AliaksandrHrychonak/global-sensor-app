@@ -28,6 +28,23 @@ export const registration = (email: any, password: any) => (dispatch: (arg0: { t
   })
 };
 
+export const login = (email: any, password: any) => (dispatch: (arg0: { type: string; payload?: any; }) => void) => {
+  return AuthService.login(email, password)
+  .then((data: any) => {
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: data
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    dispatch({
+      type: REGISTER_FAIL,
+    });
+    return Promise.reject();
+  })
+};
+
 export const logout = () => (dispatch: (arg0: { type: string; }) => void) => {
   AuthService.logout();
 

@@ -2,12 +2,14 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: calc(670px - 200px);
+  padding: 30px 100px;
 }
 
 .form__label {
   font-size: 10px;
   line-height: 12px;
-  color: #A0A0A0;
+  color: #000;
 }
 
 .form__input {
@@ -70,7 +72,7 @@
 
 .form__button {
   cursor: pointer;
-  color: #fff;
+  color: #000;
   height: 45px;
   border: none;
   border-radius: 3px;
@@ -78,8 +80,11 @@
   font-size: 14px;
   line-height: 17px;
   margin-bottom: 16px;
-  margin-top: 134px;
+  margin-top: 34px;
   transition: opacity 0.4s, background-color 0.4s linear;
+}
+.form__button_type_login {
+  margin-top: 134px;
 }
 
 .form__button_type_active {
@@ -110,6 +115,7 @@
 
 .form__subtitle {
   margin: 0;
+  color: #000;
   font-size: 14px;
   line-height: 17px;
   text-align: center;

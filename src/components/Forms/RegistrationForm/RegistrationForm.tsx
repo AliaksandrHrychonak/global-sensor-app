@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchemaRegistration } from "../../../utils/validationsForms";
 import { connect, useDispatch } from "react-redux";
 import { registration } from "../../../store/actions/authActions";
+import { Link } from "react-router-dom";
 
 interface RegistrationFormProps {
   dispatch: any
@@ -29,7 +30,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
-      <label>firstName</label>
+      <label className="form__label">firstName</label>
       <input
         type="text"
         {...register("firstName")}
@@ -45,7 +46,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
         {errors.firstName?.message}
       </span>
 
-      <label>lastName</label>
+      <label className="form__label">lastName</label>
       <input
         type="text"
         {...register("lastName")}
@@ -61,7 +62,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
         {errors.lastName?.message}
       </span>
 
-      <label>Email</label>
+      <label className="form__label">Email</label>
       <input
         type="text"
         {...register("email")}
@@ -77,7 +78,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
         {errors.email?.message}
       </span>
 
-      <label>Password</label>
+      <label className="form__label">Password</label>
       <input
         type="password"
         {...register("password")}
@@ -93,7 +94,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
         {errors.password?.message}
       </span>
 
-      <label>Confirm Password</label>
+      <label className="form__label">Confirm Password</label>
       <input
         type="password"
         {...register("confirmPassword")}
@@ -117,7 +118,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
             errors.acceptTerms ? "form__input_theme_error" : ""
           }`}
         />
-        <label htmlFor="acceptTerms" className="form-check-label">
+        <label className="form__label" htmlFor="acceptTerms">
           I have read and agree to the Terms
         </label>
         <span
@@ -132,6 +133,12 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
       <button type="submit" className="form__button form__button_type_active">
         Register
       </button>
+      <Link to="/sign-in" className="form__link">
+        <p className="form__subtitle">
+          Уже зарегистрированы?
+          <span className="form__span">Войти</span>
+        </p>
+      </Link>
     </form>
   );
 };

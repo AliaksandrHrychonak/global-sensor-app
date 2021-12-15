@@ -1,24 +1,22 @@
 import $api from "../http/index";
-import TokenService from "./TokenService";
 
 class AuthService {
-  login(username: string, password: string) {
+  login(email: string, password: string) {
     return $api
-      .post("/auth/signin", {
-        username,
+      .post("/auth/login", {
+        email,
         password
       })
-      .then((response: { data: { accessToken: any; }; }) => {
-        // if (response.data.accessToken) {
-        //   TokenService.setUser(response.data);
-        // }
-
+      .then((response: { data: any }) => {
+        if (response.data.accessToken) {
+          localStorage.setItem("token", response.data.accessToken);
+        }
         return response.data;
       });
   }
 
   logout() {
-    TokenService.removeUser();
+    localStorage.clear()
   }
 
   register(email: string, password: string) {

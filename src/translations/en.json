@@ -2,13 +2,35 @@
   "common" : {
     "logo": "logo",
     "signin": "Sign-in",
+    "registration-title": "Create Account",
+    "login-title": "Sign in",
+    "sign_in_with_google": "Sign in with Google",
     "Home": "Home",
     "PM2100": "PM2100",
     "PM2101": "PM2101",
     "PM2102": "PM2102",
     "Contact": "Contact",
     "email": "E-mail",
-    "password": "Password"
-
+    "password": "Password",
+    "promo-title": "Environmental monitoring systems",
+    "promo-subtitle": "Radiation and chemical control devices",
+    "about-company": "About Company",
+    "about-fact-company": "GLOBALSENSOR company, founded in 2021, to solve the problems of NBC protection, development and production of radiation and chemical monitoring devices, creation of environmental monitoring systems using various types of unmanned platforms for remote unmanned reconnaissance.",
+    "about-fact-integration": "Our devices are designed for ease of integration into existing monitoring systems and using the most modern technologies, the ability to connect to the network of our detectors.",
+    "about-fact-developers": "Our company employs a team of qualified engineers and software developers.",
+    "about-fact-protected": "We provide services for the integration of various devices into various networks, the development of sensor systems and networks related to the detection of radiological, toxic industrial, chemical warfare agents and biological threats.",
+    "footer-service": "Service",
+    "footer-support" : "Support",
+    "footer-contact" : "Our contacts",
+    "footer-be-dealer" : "Become a dealer",
+    "footer-module" : "Module",
+    "footer-pm2100" : "PM2100",
+    "footer-pm2101" : "PM2101",
+    "footer-pm2102" : "PM2102",
+    "footer-social-network" : "Social networks",
+    "footer-social-fb" : "Facebook",
+    "footer-social-inst" : "Instagram",
+    "footer-social-link" : "LinkedIn",
+    "footer-terms" : "Privacy Policy"
   }
 }

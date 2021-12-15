@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import './AccountBar.scss'
 import { Link } from 'react-router-dom'
+import store from '../../store'
 
 interface AccountBarProps {
   isMobile: boolean,
@@ -8,13 +9,15 @@ interface AccountBarProps {
 }
 
 export const AccountBar: FC<AccountBarProps> = ({ isMobile, toggleMenu,  }) => {
+  const state = store.getState()
+  
   return (
     <div className="account-bar">
      { 
         false ?
         <>
           {
-            isMobile && true ?
+            state.auth.isLoggedIn && true ?
             <button className="acccount-bar__burger-button" onClick={toggleMenu}>
               <span className="acccount-bar__burger-button_line"/>
             </button>
@@ -29,9 +32,6 @@ export const AccountBar: FC<AccountBarProps> = ({ isMobile, toggleMenu,  }) => {
         </>
       : 
       <>
-        <Link to="/sign-up" className="account-bar__link">
-          <button className="account-bar__button account-bar__button_type_signup">Регистрация</button>
-        </Link>
         <Link to="/sign-in" className="account-bar__link">
           <button className="account-bar__button account-bar__button_type_signin">Войти</button>
         </Link>

@@ -1,78 +1,68 @@
 import React, { FC } from "react";
 import '../Forms.scss'
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { connect, useDispatch } from "react-redux";
+import { login } from "../../../store/actions/authActions";
+import { validationSchemaLogin } from "../../../utils/validationsForms";
 
 interface LoginFormProps {}
 
 const LoginForm: FC<LoginFormProps> = () => {
+  const dispatch = useDispatch<any>();
+
+  type UserSubmitForm = {
+    email: string;
+    password: string;
+  };
+
+  const { register, handleSubmit, formState: { errors } } = useForm<UserSubmitForm>({ resolver: yupResolver(validationSchemaLogin) });
+
+  const onSubmit = (data: UserSubmitForm) => {
+    console.log(data);
+    dispatch(login(data.email, data.password))
+  };
 
   return (
-    <form className="form" noValidate>
-      {/* <label htmlFor="name-signup" className="form__label">
-        {t('email')}
-      </label>
-      <input
-        id="email-signup"
-        name="email"
-        type="email"
-        className={`form__input form__input_theme_bold ${ errors.email && "form__input_theme_error" }`}
-        required
-        onChange={handleChange}
-        value={values.email || ""}
-      />
-      <span
-        className={`form__error ${errors.email && "form__error_type_visible"}`}
-      >
-        {errors.email }
-      </span>
+    <form onSubmit={handleSubmit(onSubmit)} className="form">
 
-      <label htmlFor="password-signup" className="form__label">
-        {t('password')}
-      </label>
-      <input
-        required
-        minLength={8}
-        id="passsword-signup"
-        name="password"
-        type="password"
-        className={`form__input ${
-          errors.password && "form__input_theme_error"
-        }`}
-        value={values.password || ""}
-        onChange={handleChange}
-      />
-      <span
-        className={`form__error ${
-          errors.password && "form__error_type_visible"
-        }`}
-      >
-        {errors.password}
-      </span>
+    <label className="form__label">Email</label>
+    <input
+      type="text"
+      {...register("email")}
+      className={`form__input ${
+        errors.email ? "form__input_theme_error" : ""
+      }`}
+    />
+    <span className={`form__error ${ errors.email?.message && "form__error_type_visible"}`}>
+      {errors.email?.message}
+    </span>
 
-      {!isValid && (
-        <span
-          className={`form__error ${isValid && "form__error_type_visible"}`}
-        >
-          Что-то пошло не так...
-        </span>
-      )}
+    <label className="form__label">Password</label>
+    <input
+      type="password"
+      {...register("password")}
+      className={`form__input ${
+        errors.password ? "form__input_theme_error" : ""
+      }`}
+    />
+    <span
+      className={`form__error ${ errors.password?.message && "form__error_type_visible"}`}>
+      {errors.password?.message}
+    </span>
 
-      <button
-        disabled={!isValid}
-        className={`form__button ${
-          isValid ? "form__button_type_active" : "form__button_type_disabled"
-        }`}
-      >
-        Войти
-      </button> */}
-      <Link to="/sign-up" className="form__link">
-        <p className="form__subtitle">
-          Ещё не зарегистрированы?
-          <span className="form__span">Регистрация</span>
-        </p>
-      </Link>
-    </form>
+    <button type="submit" className="form__button form__button_type_active form__button_type_login">
+      Login
+    </button>
+    <Link to="/sign-up" className="form__link">
+      <p className="form__subtitle">
+        Ещё не зарегистрированны?
+        <span className="form__span">Создать аккаунт</span>
+      </p>
+    </Link>
+  </form>
   );
 };
 
-export default LoginForm;
+export default connect()(LoginForm);

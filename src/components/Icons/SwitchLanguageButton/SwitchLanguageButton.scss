@@ -1,0 +1,28 @@
+.button-select {
+  border: 1px solid #BDBDBD;
+  border-radius: 7px;
+  color: #E4D9D9;
+  font-weight: 500;
+  font-size: 15px;
+  line-height: 22px;
+  width: 70px;
+  text-transform: uppercase;
+  -webkit-appearance: none;
+  padding: 4px 8px 4px 9px;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 15px;
+  transition: all 150ms ease;
+
+  &:focus {
+    outline: none;
+  }
+
+  &_type_auth {
+    color: #000;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+}
