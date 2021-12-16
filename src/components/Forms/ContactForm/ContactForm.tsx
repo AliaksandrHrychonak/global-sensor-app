@@ -29,7 +29,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form form_type_contact">
-      <h2>{t("contact_us")}</h2>
+      <h2 className="form__title">{t("contact_us")}</h2>
       <label className="form__label form__label_type_contact">{t("fullname")}</label>
       <input
         type="text"
@@ -80,7 +80,7 @@ const ContactForm: FC<ContactFormProps> = () => {
 
       <button
         type="submit"
-        className="form__button form__button_type_active form__button_type_contact"
+        className="form__button form__button_type_contact"
       >
         {t("submit")}
       </button>

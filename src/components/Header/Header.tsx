@@ -1,8 +1,6 @@
 import * as React from 'react';
 import "./Header.scss"
 import NavBar from '../NavBar/NavBar';
-
-import { MenuButton } from '../Icons/MenuButton/MenuButton';
 import { availableLanguages } from "../../i18n";
 import { useTranslation } from 'react-i18next';
 import { SwitchLanguageButton } from '../Icons/SwitchLanguageButton/SwitchLanguageButton';
@@ -15,18 +13,17 @@ export interface IHeaderProps {
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = ({ isMobile, toggleMenu }) => {
-  const {t, i18n} = useTranslation()
+  const {i18n} = useTranslation()
   return (
     <header className={`header ${isMobile ? "header_type_reverse" : "" }`}>
-      <Logo />
-      {
-        isMobile ?
-        <MenuButton isMobile={isMobile} toggleMenu={toggleMenu} />
-        :
-        <NavBar rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu} /> 
-      }
-      { !isMobile && <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} type="header" /> }
-      <AccountBar isMobile={isMobile} toggleMenu={toggleMenu}/>
+      <div className="header__content">
+        <Logo />
+        {!isMobile && <NavBar rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu} /> }
+        <div className='header__tools'>
+          { !isMobile && <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} type="header" /> }
+          <AccountBar isMobile={isMobile} toggleMenu={toggleMenu}/>
+        </div>
+      </div>
     </header>
   );
 };

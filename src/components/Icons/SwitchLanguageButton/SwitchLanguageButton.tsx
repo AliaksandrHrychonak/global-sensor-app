@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-
 import "./SwitchLanguageButton.scss";
 interface SwitchLanguageButtonProps {
   availableLanguages: object | any;

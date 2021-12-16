@@ -1,8 +1,7 @@
 .promo {
-  width: calc(100% - 100px);
-  max-width: calc(1440px - 100px);
-  padding: 0 50px;
-  min-height: 600px;
+  width: calc(100% - 260px);
+  padding: 0 130px;
+  min-height: calc(100vh - 108px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,13 +12,16 @@
     font-weight: 600;
     font-size: 50px;
     line-height: 115%;
+    letter-spacing: 0.02em;
     width: 60%;
+    padding: 0 0 30px 0;
   }
 
   &__subtitle {
     font-weight: 500;
-    font-size: 22px;
+    font-size: 26px;
     line-height: 31px;
+    letter-spacing: 0.02em;
   }
 }
 

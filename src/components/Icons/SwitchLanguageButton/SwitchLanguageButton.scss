@@ -3,17 +3,19 @@
   border-radius: 7px;
   color: #E4D9D9;
   font-weight: 500;
-  font-size: 15px;
   line-height: 22px;
   width: 70px;
   text-transform: uppercase;
   -webkit-appearance: none;
+  appearance: none;
   padding: 4px 8px 4px 9px;
   background: transparent;
   cursor: pointer;
   font-family: inherit;
   font-size: 15px;
   transition: all 150ms ease;
+  text-rendering: optimizeLegibility;
+
 
   &:focus {
     outline: none;
@@ -24,5 +26,11 @@
     position: absolute;
     top: 20px;
     right: 20px;
+  }
+
+  &__lang {
+    color: #000;
+    cursor: pointer;
+    border-radius: 0 0 7px 7px;
   }
 }

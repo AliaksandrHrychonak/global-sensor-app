@@ -16,7 +16,7 @@
 
   &_type_auth {
     justify-content: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 60px);
   }
 
   &_type_contact {

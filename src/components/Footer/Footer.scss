@@ -4,11 +4,13 @@
   display: flex;
   justify-content: center;
   color: #000;
+  flex-shrink: 0;
+
   &__container {
     display: flex;
     flex-direction: column;
     width: calc(100% - 100px);
-    max-width: calc(1440px - 100px);
+    max-width: calc(1640px - 100px);
     padding: 30px 50px 15px;
   }
   &__content {

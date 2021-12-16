@@ -1,6 +1,8 @@
 import React, { FC } from 'react'
 import './AccountBar.scss'
 import { Link } from 'react-router-dom'
+import accountUserIcon from '../../images/icons/account-user.svg';
+import avatarUserIcon from '../../images/icons/avatar.svg'
 import store from '../../store'
 
 interface AccountBarProps {
@@ -17,23 +19,20 @@ export const AccountBar: FC<AccountBarProps> = ({ isMobile, toggleMenu,  }) => {
         false ?
         <>
           {
-            state.auth.isLoggedIn && true ?
+            true && isMobile ?
             <button className="acccount-bar__burger-button" onClick={toggleMenu}>
               <span className="acccount-bar__burger-button_line"/>
             </button>
             :
             <Link to="/profile" className="account-bar__link" >
-              <button className="account-bar__button account-bar__button_type_account" onClick={toggleMenu}>
-                <span className="account-bar__button-icon" />
-                Аккаунт
-              </button>
+              <button className="account-bar__button account-bar__button_type_account" onClick={toggleMenu} style={{backgroundImage: `url(${avatarUserIcon})`}} />
             </Link>
           }
         </>
       : 
       <>
         <Link to="/sign-in" className="account-bar__link">
-          <button className="account-bar__button account-bar__button_type_signin">Войти</button>
+          <button className="account-bar__button account-bar__button_type_signin" style={{backgroundImage: `url(${accountUserIcon})`}}>Войти</button>
         </Link>
       </>
     }
