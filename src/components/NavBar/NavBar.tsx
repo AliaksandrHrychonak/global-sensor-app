@@ -15,7 +15,7 @@ const NavBar: React.FunctionComponent<INavBarProps> = ({rowLink, isMobile, toggl
   const listClassName = `navigation__list ${ rowLink ? "navigation__list_type_row" : "navigation__list_type_col" }`
   const listElementClassName = `navigation__list_element ${ rowLink ? "navigation__list_element_type_row" : "navigation__list_element_type_col"}`
   const navLinkClassName = ({ isActive }: boolean | any ) => isActive ? 
-   `navigation__link navigation__link_type_active ${ rowLink ? "navigation__link_type_row" : "navigation__link_type_col"}` :
+   `navigation__link ${ rowLink ? "navigation__link_type_active-row navigation__link_type_row" : " navigation__link_type_active-col navigation__link_type_col"}` :
    `navigation__link ${ rowLink ? "navigation__link_type_row" : "navigation__link_type_col"}`
 
   return (

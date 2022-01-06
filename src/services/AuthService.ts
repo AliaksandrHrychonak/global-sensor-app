@@ -1,3 +1,4 @@
+import axios from "axios";
 import $api from "../http/index";
 
 class AuthService {
@@ -16,11 +17,16 @@ class AuthService {
   }
 
   logout() {
-    localStorage.clear()
+    return $api.post('/auth/logout')
+    .then(() => {
+      localStorage.clear()
+    })
   }
 
-  register(email: string, password: string) {
+  register(name: string, surname: string, email: string, password: string) {
     return $api.post("/auth/registration", {
+      name,
+      surname,
       email,
       password
     })
@@ -31,6 +37,23 @@ class AuthService {
       return response.data.userData;
     });
   }
+  refresh() {
+    return axios.get("https://api-global-sensor.monster/auth/refresh", {withCredentials: true})
+    .then((response: any) => {
+      if (response.data.accessToken) {
+        localStorage.setItem("token", response.data.accessToken);
+      }
+      return response.data;
+    });
+  }
+
+  loginGoogle() {
+    return $api.get('auth/google')
+    .then((data) => {
+      console.log(data);
+    })
+  }
+
 }
 
 export default new AuthService();

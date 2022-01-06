@@ -42,9 +42,56 @@ h1, h2, h3, h4, h5, h6, p, ul, li, ol, a {
   &_type_auth {
     max-width: 100%;
     position: relative;
-    padding-top: 60px;
     justify-content: center;
     background-color: #fff;
   }
+
+  &_type_profile {
+    max-width: 100%;
+    position: relative;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #fff;
+  }
+
+  &_type_product {
+    max-width: 100%;
+  }
+
+  &_type_terms {
+    width: calc(100% - 160px);
+    padding: 50px 80px;
+  }
+
+  &__head {
+    width: calc(100% - 100px);
+    max-width: 1440px;
+    padding: 15px 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+  }
 }
 
+
+
+@media screen and (max-width: 870px) {
+  .main_type_terms {
+    width: calc(100% - 80px);
+    padding: 30px 40px;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .main_type_terms {
+    width: calc(100% - 20px);
+    padding: 30px 10px;
+  }
+  .main__head {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: calc(100% - 30px);
+  }
+}

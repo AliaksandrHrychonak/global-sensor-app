@@ -1,4 +1,7 @@
-.form_type_contact {}
+.form_type_contact {
+  min-width: 400px;
+  min-height: 550px;
+}
 
 
 .form__label_type_contact {
@@ -49,4 +52,20 @@
   background-color: transparent;
   border: 1px solid #BDBDBD;
   border-radius: 8px;
+}
+
+
+@media screen and (max-width: 1000px) {
+  .form_type_contact {
+    padding-left: 35px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .form_type_contact {
+    padding: 50px 0;
+    width: 100%;
+    min-width: calc(100% - 20px);
+  }
 }

@@ -3,32 +3,22 @@ import "../Forms.scss";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { connect, useDispatch } from "react-redux";
-import { login } from "../../../store/actions/authActions";
+import { connect } from "react-redux";
 import { validationSchemaLogin } from "../../../utils/validationsForms";
 import { useTranslation } from "react-i18next";
+import { UserSubmitFormLogin } from "../../../types/formTypes";
 
-interface LoginFormProps {}
+interface LoginFormProps {
+  onSubmit: any
+}
 
-const LoginForm: FC<LoginFormProps> = () => {
-  const dispatch = useDispatch<any>();
+const LoginForm: FC<LoginFormProps> = ({ onSubmit }) => {
   const {t} = useTranslation()
-
-  type UserSubmitForm = {
-    email: string;
-    password: string;
-  };
-
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<UserSubmitForm>({ resolver: yupResolver(validationSchemaLogin) });
-
-  const onSubmit = (data: UserSubmitForm) => {
-    console.log(data);
-    dispatch(login(data.email, data.password));
-  };
+  } = useForm<UserSubmitFormLogin>({ resolver: yupResolver(validationSchemaLogin) });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">

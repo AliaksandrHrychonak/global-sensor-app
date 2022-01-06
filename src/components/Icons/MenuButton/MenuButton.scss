@@ -1,50 +1,38 @@
-.button-menu {
-  width: 26px;
-  height: 18px;
-  position: relative;
+.acccount-bar__burger-button {
+  width: 28px;
+  height: 23px;
   cursor: pointer;
   background-color: transparent;
   border: none;
   padding: 0;
   margin: 0;
   text-align: left;
-
-  & span {
-    position: absolute;
-    top: 8px;
-    width: 80%;
-    height: 2px;
-    background-color: #000;
-    border-radius: 2px;
-  }
-
-  &:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #000;
-    border-radius: 2px;
-  }
-
-  &:after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    width: 60%;
-    background-color: #000;
-    height: 2px;
-    border-radius: 2px;
-  }
-
-  &_type_hidden {
-    display: none;
-  }
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid #BDBDBD;
+  border-top: 3px solid #BDBDBD;
+  transition: opacity 0.4s linear;
 }
 
-@media screen and (max-width: 1024px) {
-  .button-menu_type_visible {
-    display: block;
+.acccount-bar__burger-button:hover {
+  opacity: 0.6;
+}
+
+.acccount-bar__burger-button_line {
+  width: 100%;
+  height: 3px;
+  background-color: #BDBDBD;
+}
+
+
+@media screen and (max-width: 450px) {
+  .acccount-bar__burger-button {
+    width: 22px;
+    height: 20.5px;
+    border-bottom: 2.5px solid #BDBDBD;
+    border-top: 2.5px solid #BDBDBD;
+  }
+  .acccount-bar__burger-button_line {
+    height: 2.5px;
   }
 }

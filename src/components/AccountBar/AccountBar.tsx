@@ -1,42 +1,43 @@
 import React, { FC } from 'react'
 import './AccountBar.scss'
-import { Link } from 'react-router-dom'
-import accountUserIcon from '../../images/icons/account-user.svg';
-import avatarUserIcon from '../../images/icons/avatar.svg'
-import store from '../../store'
+import AccountBarProfileButton from '../Icons/AccountBarProfileButton/AccountBarProfileButton';
+import { useSelector } from 'react-redux';
+import { MenuButton } from '../Icons/MenuButton/MenuButton';
+import SignInButton from '../Icons/SignInButton/SignInButton';
 
 interface AccountBarProps {
   isMobile: boolean,
-  toggleMenu: React.MouseEventHandler
+  toggleMenu: React.MouseEventHandler,
+  locationMenu: boolean
 }
 
-export const AccountBar: FC<AccountBarProps> = ({ isMobile, toggleMenu,  }) => {
-  const state = store.getState()
+const AccountBar: FC<AccountBarProps> = ({ isMobile, toggleMenu, locationMenu, }) => {
+  const auth: any = useSelector<any>(state => state.auth );
   
   return (
-    <div className="account-bar">
+    <div className={`account-bar ${isMobile ? 'account-bar_type_mobile' : 'account-bar_type_default' }`}>
      { 
-        false ?
+        auth.isLoggedIn ?
         <>
           {
-            true && isMobile ?
-            <button className="acccount-bar__burger-button" onClick={toggleMenu}>
-              <span className="acccount-bar__burger-button_line"/>
-            </button>
-            :
-            <Link to="/profile" className="account-bar__link" >
-              <button className="account-bar__button account-bar__button_type_account" onClick={toggleMenu} style={{backgroundImage: `url(${avatarUserIcon})`}} />
-            </Link>
-          }
+            isMobile && !locationMenu ?
+              <MenuButton toggleMenu={toggleMenu}/>
+              :
+              <AccountBarProfileButton isMobile={isMobile} user={auth.user} toggleMenu={toggleMenu} />
+            }          
         </>
       : 
       <>
-        <Link to="/sign-in" className="account-bar__link">
-          <button className="account-bar__button account-bar__button_type_signin" style={{backgroundImage: `url(${accountUserIcon})`}}>Войти</button>
-        </Link>
+       { 
+         isMobile && !locationMenu ?
+          <MenuButton toggleMenu={toggleMenu}/>
+          :
+          <SignInButton isMobile={isMobile} toggleMenu={toggleMenu}/>
+        }
       </>
     }
     </div>
   )
 }
 
+export default AccountBar

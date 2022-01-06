@@ -2,18 +2,19 @@ import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGOUT,
-  REFRESH_TOKEN,
-  LOGIN_SUCCESS
+  LOGIN_SUCCESS,
+  LOGIN_FAIL,
+  AUTH_LOADING
 } from "./types";
 
 import AuthService from "../../services/AuthService";
-import axios from "axios";
-import { API_URL } from "../../http";
 
-export const registration = (email: any, password: any) => (dispatch: (arg0: { type: string; payload?: any; }) => void) => {
-  return AuthService.register(email, password)
+export const registration = (name: string, surname: string, email: any, password: any) => (dispatch: (arg0: { type: string; payload?: any; }) => void) => {
+  dispatch({
+    type: AUTH_LOADING,
+  })
+  return AuthService.register(name, surname, email, password)
   .then((data: any) => {
-    console.log(data);
     dispatch({
       type: REGISTER_SUCCESS,
       payload: data
@@ -29,6 +30,9 @@ export const registration = (email: any, password: any) => (dispatch: (arg0: { t
 };
 
 export const login = (email: any, password: any) => (dispatch: (arg0: { type: string; payload?: any; }) => void) => {
+  dispatch({
+    type: AUTH_LOADING,
+  })
   return AuthService.login(email, password)
   .then((data: any) => {
     dispatch({
@@ -39,40 +43,54 @@ export const login = (email: any, password: any) => (dispatch: (arg0: { type: st
   .catch((err) => {
     console.log(err);
     dispatch({
-      type: REGISTER_FAIL,
+      type: LOGIN_FAIL,
     });
     return Promise.reject();
   })
 };
 
-export const contactCallback = (fullname: any, email: any, message: any) => (dispatch: any) => {
-  console.log(fullname, email, message);
-};
-
-export const logout = () => (dispatch: (arg0: { type: string; }) => void) => {
-  AuthService.logout();
-
+export const logout = () => (dispatch: any) => {
   dispatch({
-    type: LOGOUT,
-  });
-};
-
-export const refreshToken = (accessToken: any) => (dispatch: (arg0: { type: string; payload: any; }) => void) => {
-  dispatch({
-    type: REFRESH_TOKEN,
-    payload: accessToken,
+    type: AUTH_LOADING,
   })
-}
+  AuthService.logout()
+  .then(()=> {
+    dispatch({
+      type: LOGOUT,
+    });
+  })
+  .catch(() => {
+    dispatch({
+      type: LOGOUT,
+    });
+  })
+};
 
-export const checkAuth = () => async (dispatch: any) => {
-  try {
-    const response = await axios.get(`${API_URL}/refresh`, {withCredentials: true})
-    localStorage.setItem('token', response.data.accessToken);
+export const googleLogin = () => (dispatch: any) => {
+  AuthService.loginGoogle()
+  .then((data)=> {
+    console.log(data);
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+};
+
+export const refreshToken = () => (dispatch: any) => {
+  dispatch({
+    type: AUTH_LOADING,
+  })
+  return AuthService.refresh()
+  .then((data) => {
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: response.data.user
-    })
-} catch (e: any) {
-    console.log(e.response?.data?.message);
-}
+      payload: data
+    });
+  })
+  .catch((err) => {
+    console.log(err);
+    dispatch({
+      type: LOGIN_FAIL,
+    });
+  })
 }

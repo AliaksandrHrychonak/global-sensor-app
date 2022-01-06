@@ -1,36 +1,112 @@
 .button-select {
-  border: 1px solid #BDBDBD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 7px;
+  position: relative;
   border-radius: 7px;
-  color: #E4D9D9;
   font-weight: 500;
-  line-height: 22px;
-  width: 70px;
+  line-height: 20px;
+  width: calc(85px - 20px);
   text-transform: uppercase;
-  -webkit-appearance: none;
-  appearance: none;
-  padding: 4px 8px 4px 9px;
   background: transparent;
   cursor: pointer;
   font-family: inherit;
-  font-size: 15px;
-  transition: all 150ms ease;
-  text-rendering: optimizeLegibility;
+  font-size: 16px;
+  border: 1px solid #BDBDBD;
+  z-index: 10;
+  transition: all 0.4s linear;
 
+  &_type_active {
+
+  }
 
   &:focus {
     outline: none;
   }
 
-  &_type_auth {
-    color: #000;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+  &__lang {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    color: #fff;
+    position: relative;
+
+    &_type_header {
+
+    }
+    &_type_black {
+      color: #000;
+    }
   }
 
-  &__lang {
-    color: #000;
-    cursor: pointer;
-    border-radius: 0 0 7px 7px;
+  &__arrow {
+    width: 15px; 
+    height: 15px;
+    position: relative;
+    border-left: 1px solid #BDBDBD;
+    padding: 0 5px 0 8px;
+
+    &_type_black {
+      border-color: #000;
+    }
+
+    &_line {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 8px;
+      height: 1px;
+      background-color: #efefef;
+      display: inline-block;
+      transition: all 0.2s ease;
+      &_theme_black {
+        background-color: #000;
+      }
+      &:first-of-type {
+        border-radius: 0 0 3px 0;
+        left: 8px;
+        transform: rotate(45deg);
+      }
+      &:last-of-type {
+        right: 5px;
+        transform: rotate(-45deg);
+      }
+    }
   }
 }
+
+.button-select__list {
+  z-index: 20;
+  display: none;
+  width: 100%;
+  min-width: 80px;
+  position: absolute;
+  transform: translate(50%, 100%);
+  bottom: 0;
+  left: -50%;
+  background-color: rgb(228, 217, 217);
+  border-radius: 0 0 7px 7px;
+
+  &_type_black {
+    background-color: #efefef;
+  }
+
+  &_item {
+    padding: 5px 9px;
+    display: flex;
+    color: #000;
+    &:hover {
+      background-color: rgb(209, 198, 198);
+      border-radius: 0 0 7px 7px;
+    }
+  }
+}
+
+.button-select__list_type_open {
+  display: flex;
+  flex-direction: column;
+}
+
+

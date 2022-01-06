@@ -1,14 +1,13 @@
-import React, { FC } from 'react'
-import "./MenuButton.scss"
+import React, { FC } from "react";
+import "./MenuButton.scss";
 interface MenuButtonProps {
-  isMobile: boolean,
-  toggleMenu: (e: React.MouseEvent<HTMLElement>) => void
+  toggleMenu: (e: React.MouseEvent<HTMLElement>) => void;
 }
 
-export const MenuButton: FC<MenuButtonProps> = ({toggleMenu, isMobile}) => {
+export const MenuButton: FC<MenuButtonProps> = ({ toggleMenu }) => {
   return (
-    <button onClick={toggleMenu} className={`button-menu ${isMobile ? 'button-menu_type_visible' : 'button-menu_type_hidden'}`} >
-      <span></span>
-      </button>
-  )
-}
+    <button className="acccount-bar__burger-button" onClick={toggleMenu}>
+      <span className="acccount-bar__burger-button_line" />
+    </button>
+  );
+};

@@ -2,6 +2,7 @@
   width: calc(100% - 260px);
   padding: 0 130px;
   min-height: calc(100vh - 108px);
+  max-height: calc(1080px - 108px);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,6 +10,7 @@
   position: relative;
 
   &__title {
+    cursor: default;
     font-weight: 600;
     font-size: 50px;
     line-height: 115%;
@@ -18,13 +20,55 @@
   }
 
   &__subtitle {
+    cursor: default;
     font-weight: 500;
     font-size: 26px;
     line-height: 31px;
     letter-spacing: 0.02em;
   }
+  &__subtitle::selection {
+    background-color: transparent;
+  }
+  &__title::selection {
+    background-color: transparent;
+  }
 }
 
 #tsparticles canvas {
   position: absolute !important;
+}
+
+@media screen and (max-width: 1100px) {
+  .promo {
+    width: calc(100% - 130px);
+    padding: 0 65px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .promo {
+    min-height: calc(60vh - 108px);
+    width: calc(100% - 70px);
+    padding: 0 35px;
+    &__title {
+      width: 100%;
+      font-size: 40px;
+    }
+    &__subtitle {
+      font-size: 16px;
+    }
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .promo {
+    &__title {
+      font-size: 30px;
+      padding-bottom: 15px;
+    }
+    &__subtitle {
+      font-size: 12px;
+      line-height: 105%;
+    }
+  }
 }

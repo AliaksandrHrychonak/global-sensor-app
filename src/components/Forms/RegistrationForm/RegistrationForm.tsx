@@ -2,33 +2,25 @@ import React, { FC } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { validationSchemaRegistration } from "../../../utils/validationsForms";
-import { connect, useDispatch } from "react-redux";
-import { registration } from "../../../store/actions/authActions";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { UserSubmitFormRegister } from "../../../types/formTypes";
 
 interface RegistrationFormProps {
-  dispatch: any
+  onSubmit: any;
 }
 
-const RegistrationForm: FC<RegistrationFormProps> = () => {
-  const dispatch = useDispatch<any>();
-  const {t} = useTranslation()
+const RegistrationForm: FC<RegistrationFormProps> = ({ onSubmit }) => {
+  const { t } = useTranslation();
 
-  type UserSubmitForm = {
-    firstName: string;
-    lastName: string;
-    email: string;
-    password: string;
-    confirmPassword: string;
-    acceptTerms: boolean;
-  };
-
-  const { register, handleSubmit, formState: { errors } } = useForm<UserSubmitForm>({ resolver: yupResolver(validationSchemaRegistration) });
-
-  const onSubmit = (data: UserSubmitForm) => {
-    dispatch(registration(data.email, data.password))
-  };
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserSubmitFormRegister>({
+    resolver: yupResolver(validationSchemaRegistration),
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="form">
@@ -45,7 +37,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.firstName?.message && "form__error_type_visible"
         }`}
       >
-        {t(errors.firstName?.message || '')}
+        {t(errors.firstName?.message || "")}
       </span>
 
       <label className="form__label">{t("surname")}</label>
@@ -61,7 +53,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.lastName?.message && "form__error_type_visible"
         }`}
       >
-        {t(errors.lastName?.message || '')}
+        {t(errors.lastName?.message || "")}
       </span>
 
       <label className="form__label">{t("email")}</label>
@@ -77,7 +69,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.email?.message && "form__error_type_visible"
         }`}
       >
-        {t(errors.email?.message || '')}
+        {t(errors.email?.message || "")}
       </span>
 
       <label className="form__label">{t("password")}</label>
@@ -93,7 +85,7 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.password?.message && "form__error_type_visible"
         }`}
       >
-        {t(errors.password?.message || '')}
+        {t(errors.password?.message || "")}
       </span>
 
       <label className="form__label">{t("confirm-password")}</label>
@@ -109,10 +101,10 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
           errors.confirmPassword?.message && "form__error_type_visible"
         }`}
       >
-        {t(errors.confirmPassword?.message || '')}
+        {t(errors.confirmPassword?.message || "")}
       </span>
 
-      <div className="form-group form-check">
+      <div className="form__check">
         <input
           type="checkbox"
           {...register("acceptTerms")}
@@ -120,15 +112,18 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
             errors.acceptTerms ? "form__input_theme_error" : ""
           }`}
         />
-        <label className="form__label" htmlFor="acceptTerms">
+        <label className="form__label form__label_type_terms" htmlFor="acceptTerms">
           {t("confirm-terms")}
+          <Link to="/terms" className="form-terms__link">
+            <p className="form__terms">{t("form-terms")}</p>
+          </Link>
         </label>
         <span
           className={`form__error ${
             errors.acceptTerms?.message && "form__error_type_visible"
           }`}
         >
-          {t(errors.acceptTerms?.message || '')}
+          {t(errors.acceptTerms?.message || "")}
         </span>
       </div>
 
@@ -145,7 +140,4 @@ const RegistrationForm: FC<RegistrationFormProps> = () => {
   );
 };
 
-
 export default connect()(RegistrationForm);
-
-

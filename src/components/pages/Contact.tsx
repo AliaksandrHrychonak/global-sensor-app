@@ -13,8 +13,7 @@ interface ContactProps {
 
 export const Contact: FC<ContactProps> = ({isMobile, toggleMenu}) => {
   const {t} = useTranslation()
-  console.log(typeof t);
-  
+ 
   return (
     <>
       <Header isMobile={isMobile} toggleMenu={toggleMenu}/>

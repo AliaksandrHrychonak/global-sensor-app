@@ -32,16 +32,24 @@ const Footer: FC<FooterProps> = () => {
       title: "footer-module",
       items: [
         {
-          name: "footer-pm2100",
-          path: "/pm2100",
+          name: "GS2100",
+          path: "/gs2100",
         },
         {
-          name: "footer-pm2101",
-          path: "/pm2101",
+          name: "GS2101",
+          path: "/gs2100-01",
         },
         {
-          name: "footer-pm2102",
-          path: "/pm2101",
+          name: "GS2102",
+          path: "/gs2100-02",
+        },
+        {
+          name: "GS450",
+          path: "/gs450",
+        },
+        {
+          name: "GS500",
+          path: "/gs500",
         },
       ],
     },
@@ -77,10 +85,10 @@ const Footer: FC<FooterProps> = () => {
               <h4 className="footer__title">{t(item.title)}</h4>
               {item.items.map((e) => (
                 <li key={e.name} className="footer__list_item">
-                  <Link to={e.path} className="footer__link">
+                  <a href={e.path} className="footer__link">
                     { e.image && <img  alt={e.name} src={e.image} className="footer__social_icon"/> }
                     <p className="footer__subtitle">{t(e.name)}</p>
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>

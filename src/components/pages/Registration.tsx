@@ -3,21 +3,25 @@ import { useTranslation } from 'react-i18next'
 import { availableLanguages } from '../../i18n'
 import ContainerAuth from '../Containers/ContainerAuth'
 import RegistrationForm from '../Forms/RegistrationForm/RegistrationForm'
+import Logo from '../Icons/Logo/Logo'
 import { SwitchLanguageButton } from '../Icons/SwitchLanguageButton/SwitchLanguageButton'
-import SignInWithSocial from '../SignInWithSocial/SignInWithSocial'
 
 interface RegistrationProps {
-  
+  onSubmit: any
+  onAcessWithGoogle: any
 }
 
-export const Registration: FC = () => {
-  const {i18n} = useTranslation()
+export const Registration: FC<RegistrationProps> = ({ onSubmit, onAcessWithGoogle }) => {
+  const { i18n } = useTranslation()
   return (
     <main className="main main_type_auth">
-      <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} type="auth"/>
+      <div className='main__head'>
+        <Logo />
+        <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} type="black"/>
+      </div>
       <ContainerAuth title="registration-title">
-        <SignInWithSocial />
-        <RegistrationForm />
+        {/* <SignInWithSocial onAccess={onAcessWithGoogle}/> */}
+        <RegistrationForm onSubmit={onSubmit}/>
       </ContainerAuth>
     </main>
   )

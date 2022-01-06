@@ -4,16 +4,24 @@ export const links = [
     path: "/"
   },
   {
-    name: "PM2100",
-    path: "/pm2100"
+    name: "GS2100",
+    path: "/gs2100"
   },
   {
-    name: "PM2101",
-    path: "/pm2101"
+    name: "GS2101",
+    path: "/gs2100-01"
   },
   {
-    name: "PM2102",
-    path: "/pm2102"
+    name: "GS2102",
+    path: "/gs2100-02"
+  },
+  {
+    name: "GS450",
+    path: "/gs450"
+  },
+  {
+    name: "GS500",
+    path: "/gs500"
   },
   {
     name: "Contact",

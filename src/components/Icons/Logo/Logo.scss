@@ -2,3 +2,30 @@
   width: 230px;
   object-fit: contain;
 }
+.logo-link {
+  display: flex;
+}
+
+@media screen and (max-width: 1100px) {
+  .logo {
+    width: 200px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .logo {
+    width: 180px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .logo {
+    width: 170px;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .logo {
+    width: 160px;
+  }
+}

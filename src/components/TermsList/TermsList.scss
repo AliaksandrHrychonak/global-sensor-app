@@ -1,0 +1,36 @@
+.terms {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+&__title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 110%;
+  margin-top: 20px;
+}
+&__subtitle {
+  color: rgb(223, 223, 223);
+  width: 100%;
+  max-width: 800px;
+  padding-left: 7px;
+  font-weight: 500;
+  padding-top: 10px;
+  font-size: 16px;
+  letter-spacing: 0.02em;
+  line-height: 110%;
+}
+}
+
+@media screen and (max-width: 490px) {
+
+  .terms__subtitle {
+    font-size: 12px;
+  }
+  .terms__title {
+    font-size: 18px;
+  }
+
+}

@@ -1,0 +1,62 @@
+.account-bar__link-profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  &_type_default {
+    margin-left: 30px;
+  }
+  &_type_mobile {
+    justify-content: flex-start;
+    width: calc(100% - 40px);
+    padding: 20px 20px;
+  }
+}
+
+.account-bar__button-profile {
+  background-color: #fff;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border: 1px solid #BDBDBD;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  &_type_account {
+
+  }
+}
+
+.account-bar__profile-info {
+  margin-left: 20px;
+  &_name {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 110%;
+    color: #000;
+    padding-bottom: 8px;
+  }
+
+  &_email {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.03em;
+    line-height: 110%;
+    color: #000;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  .account-bar__profile-info {
+    margin-left: 10px;
+    &_name {
+      font-size: 12px;
+    }
+    &_email {
+      font-size: 10px;
+    }
+  }
+}

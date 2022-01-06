@@ -1,0 +1,154 @@
+.product__feature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+
+  &_type_module {
+    max-width: 450px;
+  }
+  &_type_detector {
+    max-width: 700px;
+  }
+  &-element {
+    display: flex;
+    width: calc(100% - 10px);
+    padding: 0 10px 0 0;
+    border-bottom: 1px solid #fead6282;
+  }
+
+  &_item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 22px 0 18px;
+  }
+
+  &_title {
+    width: 80%;
+    font-weight: 600;
+    font-size: 18px;
+    color: #FEAE62;
+    padding: 0 0 14px 0;
+    border-bottom: 1px solid #FFFFFF;
+  }
+
+  &_subtitle {
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 110%;
+    color: #ffffff;
+
+    &_type_value {
+      color: #FEAE62;
+      text-align: right;
+      min-width: min-content;
+    }
+
+    &_type_detector {
+      min-width: fit-content;
+    }
+
+    &_type_extra {
+      color: #FEAE62;
+      text-align: right;
+    }
+  }
+
+  &_line {
+    height: 1px;
+    background-color: #fead62b1;
+    border: none;
+    width: 100%;
+    margin: 8px 0 0 0;
+  }
+
+  &_list-extra {
+  }
+
+  &_item-extra {
+
+  }
+}
+
+
+@media screen and (max-width: 1540px) {
+  .product__feature {
+
+    &_title {
+      font-size: 18px;
+    }
+  
+    &_subtitle {
+      font-size: 15px;
+    }
+    &_item {
+      margin-top: 16px;
+      margin-bottom: 16px;
+     }
+
+  }
+}
+
+
+@media screen and (max-width: 1300px) {
+  .product__feature {
+
+    &_type_detector {
+      max-width: 670px;
+    }
+  }
+}
+
+@media screen and (max-width: 1220px) {
+  .product__feature {
+    
+    &_type_module {
+      max-width: 90%;
+    }
+    &_type_detector {
+      margin-top: 40px;
+      max-width: 90%;
+    }
+  }
+  .product__feature_subtitle {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .product__feature {
+    
+    &_type_module {
+      max-width: 100%;
+    }
+    &_type_detector {
+      margin-top: 40px;
+      max-width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .product__feature {
+    
+    &_type_module {
+      max-width: 100%;
+    }
+    &_type_detector {
+      margin-top: 40px;
+      max-width: 100%;
+    }
+  }
+  .product__feature_subtitle {
+    font-size: 14px;
+    line-height: 110%;
+  }
+  .product__feature_subtitle_type_detector {
+    min-width: inherit;
+  }
+  .product__feature_item_type_extra {
+    max-width: 100%;
+  }
+}

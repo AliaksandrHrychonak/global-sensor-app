@@ -4,7 +4,7 @@ import NavBar from '../NavBar/NavBar';
 import { availableLanguages } from "../../i18n";
 import { useTranslation } from 'react-i18next';
 import { SwitchLanguageButton } from '../Icons/SwitchLanguageButton/SwitchLanguageButton';
-import { AccountBar } from '../AccountBar/AccountBar';
+import AccountBar from '../AccountBar/AccountBar';
 import Logo from '../Icons/Logo/Logo';
 
 export interface IHeaderProps {
@@ -21,7 +21,7 @@ const Header: React.FunctionComponent<IHeaderProps> = ({ isMobile, toggleMenu })
         {!isMobile && <NavBar rowLink={true} isMobile={isMobile} toggleMenu={toggleMenu} /> }
         <div className='header__tools'>
           { !isMobile && <SwitchLanguageButton i18n={i18n} availableLanguages={availableLanguages} type="header" /> }
-          <AccountBar isMobile={isMobile} toggleMenu={toggleMenu}/>
+          <AccountBar isMobile={isMobile} toggleMenu={toggleMenu} locationMenu={false} />
         </div>
       </div>
     </header>

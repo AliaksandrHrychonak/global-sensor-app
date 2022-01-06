@@ -10,6 +10,16 @@
   font-size: 10px;
   line-height: 12px;
   color: #000;
+
+  &_type_terms {
+    width: 100%;
+    display: flex;
+    padding-left: 3px;
+  }
+}
+
+.form-terms__link {
+  padding-left: 3px;
 }
 
 .form__input {
@@ -23,6 +33,16 @@
   line-height: 17px;
   text-rendering: optimizeLegibility;
   background-color: transparent;
+}
+
+.form__check {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+.form__terms {
+  color: #3456F3;
 }
 
 .form__input:last-of-type {
@@ -87,6 +107,7 @@
 }
 
 .form__button_type_active {
+  color: #fff;
   background-color: #3456F3;
 }
 
@@ -125,6 +146,13 @@
   color: #3456F3;
 }
 
+@media screen and (max-width: 650px) {
+  .form {
+    max-width: calc(670px - 100px);
+    padding: 30px 50px;
+  }
+}
+
 @media screen and (max-width: 480px) {
   .form__button {
     font-size: 12px;
@@ -134,11 +162,21 @@
     font-size: 12px;
     line-height: 15px;
   }
-  
+  .form__check {
+    align-items: flex-start;
+  }
+  .form__label_type_terms {
+    flex-direction: column;
+    margin-left: 6px;
+  }
 }
 
 @media screen and (max-width: 450px) {
   .form__error_type_search {
     justify-content: flex-start;
+  }
+  .form {
+    max-width: calc(670px - 46px);
+    padding: 30px 23px;
   }
 }
