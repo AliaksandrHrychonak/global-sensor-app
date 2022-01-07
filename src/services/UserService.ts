@@ -13,9 +13,16 @@ class UserService {
     return $api
       .post("/contact", {fullname, email, message})
       .then((response: any) => {
-        console.log(response);
         return response.data;
       });
+  }
+
+  updateUser() { 
+
+  }
+
+  updatePassword() { 
+
   }
 
 }

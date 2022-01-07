@@ -34,9 +34,6 @@ export const dataModule500 = [
   { name: "interface", value: "pm2102-interface" },
 ];
 
-
-
-
 export const dataModuleDetector = [
   { name: "detector-description" },
   { name: "detector", value: "detector-ti" },

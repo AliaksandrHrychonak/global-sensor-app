@@ -1,6 +1,10 @@
 .logo {
   width: 230px;
   object-fit: contain;
+
+  &_type_profile {
+    width: 150px;
+  }
 }
 .logo-link {
   display: flex;

@@ -7,10 +7,7 @@ interface SideBarButtonArrowProps {
 
 const SideBarButtonArrow: FC<SideBarButtonArrowProps> = ({isOpen, toggleSideBar}) => {
   return (
-    <div className={`${isOpen ? 'sidebar-arrow sidebar-arrow_type_open' : 'sidebar-arrow'}`} onClick={toggleSideBar}>
-      <div className={`${isOpen ? 'sidebar-arrow_line-top' : "sidebar-arrow_top"}`}></div>
-      <div className={`${isOpen ? 'sidebar-arrow_line-bottom' : "sidebar-arrow_bottom"}`}></div>
-    </div>
+    <div className={`${isOpen ? 'sidebar-arrow' : 'sidebar-arrow sidebar-arrow_type_open'}`} onClick={toggleSideBar} /> 
   )
 }
 

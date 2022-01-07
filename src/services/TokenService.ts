@@ -7,20 +7,15 @@ class TokenService {
 
   updateLocalAccessToken(token: string | any) {
     localStorage.removeItem('token')
+    localStorage.setItem("token", JSON.stringify(token));
   }
 
-  getUser() {
-    const user: string | any = localStorage.getItem("user")
-    return JSON.parse(user);
+  setToken(token: string | any) {
+    localStorage.setItem("token", JSON.stringify(token));
   }
 
-  // setToken(token: any) {
-  //   console.log(JSON.stringify(user));
-  //   localStorage.setItem("user", JSON.stringify(user));
-  // }
-
-  removeUser() {
-    localStorage.removeItem("user");
+  clear() {
+    localStorage.clear()
   }
 }
 

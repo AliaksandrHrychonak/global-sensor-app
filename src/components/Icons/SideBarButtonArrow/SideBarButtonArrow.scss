@@ -1,85 +1,47 @@
 .sidebar-arrow {
-  cursor: pointer;
-  position: relative;
-  height: 30px;
+  display: inline-block;
   width: 30px;
-  transition: transform .1s;
-  $transition-time: .15s;
+  height: 30px;
+  margin: 15px;
+  position: relative;
+
+  &::before {
+    top: 7px;
+    position: absolute;
+    left: 2px;
+    width: 26px;
+    height: 3px;
+    content: "";
+    transition: transform .3s;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    background: rgb(0, 0, 0);
+    transform: translateY(1px) rotate(-45deg) scaleX(.6);
+  }
+
+  &::after {
+    bottom: 7px;
+    position: absolute;
+    left: 2px;
+    width: 26px;
+    height: 3px;
+    content: "";
+    transition: transform .3s;
+    border-top-right-radius: 1px;
+    border-bottom-right-radius: 1px;
+    background: rgb(0, 0, 0);
+    transform: translateY(-2px) rotate(45deg) scaleX(.6);
+  }
 
   &_type_open {
-    height: 20px;
-  }
-  
-  &_top,
-  &_bottom {
-    background-color: #666;
-    height: 3px;
-    left: 0px;
-    position: absolute;
-    top: 50%;
-    width: 60%;
-    
-    &:after {
-      background-color: rgb(74, 74, 74);
-      content: '';
-      height: 100%;
-      position: absolute;
-      top: 0;
-      transition: all $transition-time;
-    }
-  }
-
-  &_line-top,
-  &_line-bottom {
-    background-color: #666;
-    height: 3px;
-    left: 0px;
-    position: absolute;
-    width: 100%;
-  }
-  &_line-top {
-    top: 0;
-  }
-  &_line-bottom {
-    bottom: 0;
-  }
-  
-  &_top {
-    transform: rotate(45deg);
-    transform-origin: bottom right;
-    
-    &:after {
-      left: 100%;
-      right: 0;
-      transition-delay: 0s;
-    }
-  }
-  
-  &_bottom {
-    transform: rotate(-45deg);
-    transform-origin: top right;
-    
-    &:after {
-      left: 0;
-      right: 100%;
-      transition-delay: $transition-time;
-    }
-  }
-  
-  &:hover & {
-    
-    &_top:after {
-      left: 0;
-      transition-delay: $transition-time;
+    &::after {
+      bottom: 7px;
+      transform: none;
     }
 
-    &_bottom:after {
-      right: 0;
-      transition-delay: 0s;
+    &::before {
+      top: 8px;
+      transform: none;
     }
-  }
-  
-  &:active {
-    transform: scale(0.9);
   }
 }

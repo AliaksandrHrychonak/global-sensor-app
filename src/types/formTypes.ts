@@ -24,3 +24,9 @@ export type UserSubmitFormUpdatePassword = {
   newPassword: string;
   confirmPassword: string;
 };
+
+export type UserSubmitForm = {
+  fullname: string;
+  email: string;
+  message: string;
+};
