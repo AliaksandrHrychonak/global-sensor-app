@@ -5,18 +5,18 @@ import ProfileForm from '../Forms/ProfileForm/ProfileForm'
 import UpdatePasswordForm from '../Forms/UpdatePasswordForm/UpdatePasswordForm'
 
 interface ProfileUserProps {
-  
+  onUpdateUser: any
+  onUpdateUserPas: any
 }
 
-const ProfileUser: FC<ProfileUserProps> = ({}) => {
-  const user: any = useSelector<any>(state => state.auth.user)
+const ProfileUser: FC<ProfileUserProps> = ({onUpdateUser, onUpdateUserPas}) => {
   return (
     <section className="profile-user">
       <h1 className="profile-user__title">Account Settings</h1>
 
       
-      <ProfileForm/>
-      <UpdatePasswordForm />
+      <ProfileForm onUpdateUser={onUpdateUser}/>
+      <UpdatePasswordForm onUpdateUserPas={onUpdateUserPas}/>
     </section>
   )
 }

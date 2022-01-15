@@ -38,7 +38,7 @@ export const validationSchemaContact = Yup.object().shape({
     .max(400, "error_max_fourty"),
 });
 
-const FILE_SIZE = 160 * 1024;
+const FILE_SIZE = 2 * 1024 * 1024;
 const SUPPORTED_FORMATS = [
   "image/jpg",
   "image/jpeg",
@@ -47,34 +47,40 @@ const SUPPORTED_FORMATS = [
 ];
 
 export const validationSchemaProfile = Yup.object().shape({
-  file: Yup.mixed().required("A file is required").test(
-    "fileSize",
-    "File too large",
-    value => value && value.size <= FILE_SIZE
-  )
-  .test(
-    "fileFormat",
-    "Unsupported Format",
-    value => value && SUPPORTED_FORMATS.includes(value.type)
-  ),
-  firstName: Yup.string().required("error_name_reg")
+  file: Yup.lazy(value => {
+    switch (typeof value) {
+      case 'object':
+        return Yup.mixed().test(
+          "fileFormat",
+          "error_unsupported_format",
+          value => value && SUPPORTED_FORMATS.includes(value.type)
+        )
+        .test(
+          "fileSize",
+          "error_file_too_large",
+          value => value && value.size <= FILE_SIZE
+        )
+      case 'undefined':
+        return Yup.string(); 
+      default:
+        return Yup.mixed().test(
+          "fileFormat",
+          "error_unsupported_format",
+          value => value && SUPPORTED_FORMATS.includes(value.type)
+        )
+        .test(
+          "fileSize",
+          "error_file_too_large",
+          value => value && value.size <= FILE_SIZE
+        )
+    }
+  }),
+  firstName: Yup.string()
     .min(2, "error_min_two")
     .max(20, "error_max_twenty"),
   lastName: Yup.string()
-    .required("error_surname_reg")
     .min(6, "error_min_six")
     .max(20, "error_max_twenty"),
-  oldPassword:  Yup.string()
-    .required("error_pas_red")
-    .min(6, "error_min_six")
-    .max(40, "error_max_fourty"),
-  password: Yup.string()
-    .required("error_pas_red")
-    .min(6, "error_min_six")
-    .max(40, "error_max_fourty"),
-  confirmPassword: Yup.string()
-    .required("error_сonfirm_reg")
-    .oneOf([Yup.ref("password"), null], "error_confirm_pas_valid"),
 });
 
 export const validationSchemaUpdatePassword = Yup.object().shape({
@@ -86,7 +92,7 @@ export const validationSchemaUpdatePassword = Yup.object().shape({
     .required("error_pas_red")
     .min(6, "error_min_six")
     .max(40, "error_max_fourty"),
-  confirmPassword: Yup.string()
+    verifyPassword: Yup.string()
     .required("error_сonfirm_reg")
     .oneOf([Yup.ref("password"), null], "error_confirm_pas_valid"),
 });

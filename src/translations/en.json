@@ -31,6 +31,10 @@
     "confirm-password": "Confirm Password",
     "confirm-terms": "I have read and agree to the Terms",
     "register": "Register",
+    "email-verified": "Verified",
+    "email-not-verified": "Not Verified",
+    "image-drag": "Drag an image here or click to select.",
+    "image-drop": "Drop your image here ...",
 
     "error_name_reg": "First Name is required.",
     "error_surname_reg": "Surname is required.",
@@ -48,6 +52,8 @@
     "error_email_valid": "Email is invalid.",
     "error_pas_valid": "Password is required.",
     "error_confirm_pas_valid": "Confirm password does not match.",
+    "error_unsupported_format": "Error! Only formats are supported: .jpeg, .png, .jpg, .gif",
+    "error_file_too_large": "Error! The file size is too large! The maximum file size is 2 * 1024 * 1024.",
    
     "promo-title": "Environmental monitoring systems",
     "promo-subtitle": "Radiation and chemical control devices",

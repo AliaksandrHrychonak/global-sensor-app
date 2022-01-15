@@ -3,7 +3,10 @@ import {
   FEEDBACK_FORM_LOADING,
   FEEDBACK_FORM_SUBMIT_ERR,
   FEEDBACK_FORM_SUBMIT_SUCCESS,
-  LOGIN_FAIL
+  LOGIN_FAIL,
+  UPDATE_USER_FORM_ERR,
+  UPDATE_USER_FORM_LOADING,
+  UPDATE_USER_FORM_SUCCESS
 } from "./types";
 
 import UserService from "../../services/UserService";
@@ -37,6 +40,42 @@ export const getUserMe = () => async (dispatch: any) => {
     dispatch({
       type: LOGIN_FAIL,
       payload: err
+    });
+  })
+}
+
+export const updateUserMe = (name: string, surname: string) => async (dispatch: any) => {
+  dispatch({
+    type: UPDATE_USER_FORM_LOADING,
+  })
+  return UserService.updateUser(name, surname)
+  .then((data) => {
+    dispatch({
+      type: UPDATE_USER_FORM_SUCCESS,
+      payload: data
+    })
+  })
+  .catch((err) => {
+    dispatch({
+      type: UPDATE_USER_FORM_ERR,
+    });
+  })
+}
+
+export const updateUserMeAvatar = (avatar: any) => async (dispatch: any) => {
+  dispatch({
+    type: UPDATE_USER_FORM_LOADING,
+  })
+  return UserService.updateAvatar(avatar)
+  .then((data) => {
+    dispatch({
+      type: UPDATE_USER_FORM_SUCCESS,
+      payload: data
+    })
+  })
+  .catch((err) => {
+    dispatch({
+      type: UPDATE_USER_FORM_ERR,
     });
   })
 }

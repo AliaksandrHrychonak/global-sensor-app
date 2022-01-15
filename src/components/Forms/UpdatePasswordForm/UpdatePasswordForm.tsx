@@ -6,9 +6,11 @@ import { useTranslation } from 'react-i18next'
 import { UserSubmitFormUpdatePassword } from '../../../types/formTypes'
 import { validationSchemaUpdatePassword } from '../../../utils/validationsForms'
 
-interface UpdatePasswordFormProps {}
+interface UpdatePasswordFormProps {
+  onUpdateUserPas: any
+}
 
-const UpdatePasswordForm: FC<UpdatePasswordFormProps> = ({}) => {
+const UpdatePasswordForm: FC<UpdatePasswordFormProps> = ({onUpdateUserPas}) => {
   const { t } = useTranslation()
 
   const {
@@ -20,7 +22,7 @@ const UpdatePasswordForm: FC<UpdatePasswordFormProps> = ({}) => {
   })
 
   return (
-    <form className="form-password">
+    <form className="form-password" onSubmit={handleSubmit(onUpdateUserPas)}>
       <h2 className="form-password__title">Security</h2>
       <label className="form-password__label">
         {t('oldPassword')}
@@ -52,13 +54,13 @@ const UpdatePasswordForm: FC<UpdatePasswordFormProps> = ({}) => {
         {t('confirm-password')}
         <input
         type="password"
-        {...register('confirmPassword')}
-        className={`form-password__input ${errors.confirmPassword ? 'form-password__input_theme_error' : ''}`}
+        {...register('verifyPassword')}
+        className={`form-password__input ${errors.verifyPassword ? 'form-password__input_theme_error' : ''}`}
         />
         <span
-          className={`form-password__error ${errors.confirmPassword?.message && 'form-password__error_type_visible'}`}
+          className={`form-password__error ${errors.verifyPassword?.message && 'form-password__error_type_visible'}`}
         >
-          {t(errors.confirmPassword?.message || '')}
+          {t(errors.verifyPassword?.message || '')}
         </span>
       </label>
       

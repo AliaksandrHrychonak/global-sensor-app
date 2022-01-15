@@ -13,7 +13,7 @@ import PM2100 from '../pages/PM2100';
 import { MobileMenu } from '../MobileMenu/MobileMenu';
 import { googleLogin, login, logout, refreshToken, registration } from '../../store/actions/authActions';
 import ProtectedRoute from '../ProdectedRoute/ProtectedRoute';
-import { UserSubmitFormLogin, UserSubmitFormRegister } from '../../types/formTypes';
+import { UserSubmitFormLogin, UserSubmitFormProfile, UserSubmitFormRegister, UserSubmitFormUpdatePassword } from '../../types/formTypes';
 import Profile from '../pages/Profile';
 import {
   dataModule,
@@ -35,6 +35,7 @@ import {
   gs500Image,
 } from '../../utils/pmData';
 import Terms from '../pages/Terms';
+import { updateUserMe, updateUserMeAvatar } from '../../store/actions/userActions';
 
 export const App: React.FunctionComponent = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false)
@@ -79,6 +80,16 @@ export const App: React.FunctionComponent = () => {
   const handleRegister = (data: UserSubmitFormRegister) => {
     dispatch(registration(data.firstName, data.lastName, data.email, data.password))
     navigate('/sign-in')
+  }
+
+  const handleSubmitProfileForm = (data: UserSubmitFormProfile) => {
+    if(data.file) {
+      dispatch(updateUserMeAvatar(data.file))    
+    }
+    dispatch(updateUserMe(data.firstName, data.lastName))    
+  }
+  const handleSubmitProfileUpdatePasForm = (data: UserSubmitFormUpdatePassword) => {
+     console.log(data);
   }
 
   const handleLoginWithGoogle = () => {
@@ -164,7 +175,7 @@ export const App: React.FunctionComponent = () => {
             />
           }
         />
-        <Route path="/profile/*" element={<ProtectedRoute children={<Profile />} />} />
+        <Route path="/profile/*" element={<ProtectedRoute children={<Profile onLogout={handleLogout} onUpdateUser={handleSubmitProfileForm} onUpdateUserPas={handleSubmitProfileUpdatePasForm}/>} />} />
         <Route path="/contact" element={<Contact isMobile={isMobile} toggleMenu={handleMobileMenu} />} />
         <Route path="/sign-in" element={<Login onSubmit={handleLogin} onAcessWithGoogle={handleLoginWithGoogle} />} />
         <Route

@@ -10,8 +10,6 @@ export type UserSubmitFormProfile = {
   file: any;
   firstName: string;
   lastName: string;
-  email: string;
-  
 };
 
 export type UserSubmitFormLogin = {
@@ -22,7 +20,7 @@ export type UserSubmitFormLogin = {
 export type UserSubmitFormUpdatePassword = {
   oldPassword: string,
   newPassword: string;
-  confirmPassword: string;
+  verifyPassword: string;
 };
 
 export type UserSubmitForm = {

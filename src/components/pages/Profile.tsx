@@ -6,10 +6,11 @@ import ProfileBar from "../ProfileBar/ProfileBar";
 import ProfileUser from "../ProfileUser/ProfileUser";
 
 interface ProfileProps {
-
+  onLogout: () => void,
+  onUpdateUser: any
+  onUpdateUserPas: any
 }
-
-const Profile: FC<ProfileProps> = ({}) => {
+const Profile: FC<ProfileProps> = ({ onLogout, onUpdateUser, onUpdateUserPas }) => {
   const [isOpenSideBar, setIsOpenSideBar] = useState(true)
 
   const handleSideBarOpen = () => {
@@ -19,10 +20,9 @@ const Profile: FC<ProfileProps> = ({}) => {
   return (
     <>
       <main className="main main_type_profile">
-        <ProfileBar isOpen={isOpenSideBar} toggleSideBar={handleSideBarOpen}/>
+        <ProfileBar isOpen={isOpenSideBar} toggleSideBar={handleSideBarOpen} onLogout={onLogout}/>
         <Routes>
-          <Route path="/" element={<ProfileUser />}/>
-          <Route path="/me" element={<p>me</p>}/>
+          <Route path="/" element={<ProfileUser onUpdateUser={onUpdateUser} onUpdateUserPas={onUpdateUserPas}/>}/>
         </Routes>
       </main>
     </>
